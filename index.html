@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>memory</h1>
+    </header>
+    <main>
+        <aside>
+            <ul id="tableauDesScores" class="tableauScores"></ul>
+        </aside>
+        <article data-visible="false">
+            <div class="tableau" id="tableau" data-number="36"></div>
+            <progress id="file" min="0" max="300" value="300" class="barre-de-progression"></progress>
+        </article>
+    </main>
+    <button id="lancerJeu" onclick="creationJeu(18)" data-visible="true">Commencer</button>
+</body>
+<script src="main.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        RecupererScores()
+    })
+</script>
+
+</html>

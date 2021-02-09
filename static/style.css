@@ -1,0 +1,44 @@
+body {
+    max-width: 100ch;
+    margin: auto;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 11fr;
+    grid-gap: 20px;
+}
+
+[data-visible="false"] {
+    display: none;
+}
+
+[data-visible="true"] {
+    display: block;
+}
+
+
+
+.tableau {
+    max-width: 1024px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(calc(36 / 4), minmax(100px, 1fr));
+    border: 1px solid black;
+}
+
+.conteneur-carte {
+    border: 1px solid black;
+}
+
+.carte[data-flipped="false"] {
+    opacity: 0;
+}
+
+.carte[data-flipped="true"] {
+    opacity: 1;
+}
+
+.barre-de-progression {
+    width: 100%;
+}
