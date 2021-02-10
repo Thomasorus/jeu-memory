@@ -1,0 +1,15 @@
+[data-visible="false"] {
+    display: none;
+}
+
+[data-visible="true"] {
+    display: block;
+}
+
+[data-flipped="false"] {
+    opacity: 0;
+}
+
+[data-flipped="true"] {
+    opacity: 1;
+}

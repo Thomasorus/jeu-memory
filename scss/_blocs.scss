@@ -1,0 +1,21 @@
+// Le tableau qui contient les cartes est aussi une grille
+// Cependant cette fois on ne donne pas de fractions fixes, on utilise repeat() afin de générer autant une grille automatique et responsive
+// minmax() sert en effet à définir une taille minimale et maximale
+// Dans note cas, les cartes doivent faire minimum 100pixels, maximum une fraction.
+.tableau {
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.conteneur-carte {
+    border: 1px solid black;
+}
+
+.carte {
+    min-width: 100px;
+}
+
+.barre-de-progression {
+    width: 100%;
+}

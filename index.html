@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory</title>
-    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
+<!-- Le template est simple car beaucoup d'éléments seront créés en JavaScript
+    Notons cependant des règles simples :
+        - cCe qu'on va sélectionner en JavaScript possède un ID
+        - Avoir un ID n'empêche pas d'avoir une classe car utiliser un ID en CSS est une mauvaise pratique (spécificité élevée)
+        - Les états de l'application sont gérés via des data attributes et non des classes afin de séparer fonctionnel et visuel
+        - On utilise un maximum de HTML sémantique : main pour la partie principale, aside pour les scores, article pour le jeu.
+-->
+
 <body>
     <header>
-        <h1>memory</h1>
+        <h1>Jeu de memory</h1>
     </header>
     <main>
         <aside>
@@ -24,9 +30,17 @@
     </main>
     <button id="lancerJeu" onclick="creationJeu(18)" data-visible="true">Commencer</button>
 </body>
+
+<!-- On charge le JavaScript à la fin pour ne pas bloquer le rendu de la page -->
 <script src="main.js"></script>
+
+<!-- Utiliser un addEventListener pour vérifier que le DOM est chargé est TRÈS important !
+    En effet notre JavaScript va manipuler des éléments de la page. Si on le déclenche avant que celle-ci
+    soit affichée, cela ne marchera pas !
+-->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        // Dès que la page est chargée, on va récupérer les scores
         RecupererScores()
     })
 </script>

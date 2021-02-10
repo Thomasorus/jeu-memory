@@ -1,0 +1,26 @@
+// Il y a peu de style dans cette application, principalement car le il n'y en a pas beaucoup besoin pour avoir un memory fonctionnel !
+
+// En premier lieu on importe un reset (ici celui de Andy Bell, qui est moderne et non intrusif) afin d'appliquer des règles de base a notre CSS.
+@import "./reset";
+
+// On définit une taille maximale et on centre notre body
+// Notons l'utilisation de ch comme valeur : la taille du body dépend ainsi de la taille de la typographie, pratique !
+body {
+    margin: auto;
+}
+
+// On utilise une grille simple : à gauche les scores, à droite le jeu. 
+// On divise par 12 la page et on donne 1 fraction aux scores et 11 fractions au jeu.
+// Et on séparer de 20 pixels les éléments de notre grille.
+main {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+@import "./blocs";
+@import "./exceptions";
