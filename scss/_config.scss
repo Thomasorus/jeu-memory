@@ -1,0 +1,42 @@
+// Ici on définit deux choses :
+// 1. Nos variables ou custom properties, qui sont essentiellement des couleurs.
+// 2. Nos animations via @keyframes
+// Le but est de réutiliser ces variables et animations plusieurs fois et de toujours savoir où elles sont
+
+
+// A noter : --gradient contient un dégradé de couleur arc en ciel allant vers le haut à droite.
+// A noter : afin d'avoir une typographie plus cohérente avec le système d'exploitation du joueur, on peut demander
+// au css de prendre une font disponible sur son ordinateur.
+:root {
+    --background: white;
+    --text: black;
+    --gradient: linear-gradient(to right top, orange, yellow, green, cyan, blue, violet);
+    --border: black;
+    --system-fonts: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+}
+
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        -webkit-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+
+    100% {
+        -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+
+}

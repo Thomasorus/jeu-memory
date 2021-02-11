@@ -1,21 +1,73 @@
-// Le tableau qui contient les cartes est aussi une grille
-// Cependant cette fois on ne donne pas de fractions fixes, on utilise repeat() afin de générer autant une grille automatique et responsive
-// minmax() sert en effet à définir une taille minimale et maximale
-// Dans note cas, les cartes doivent faire minimum 100pixels, maximum une fraction.
+// Le tableau de jeu est l'élément central du site car il reçoit les cartes que le joueur va tenter de retourner.
+// On utilise CSS Grid pour créer la grille de cartes.
 .tableau {
+    display: grid;
+    // Comme on ne sait pas combien de cartes on va avoir, on demande au CSS de créer autant de colonnes qu'il souhaite
+    // Mais on lui donne des règles : chaque carte doit faire au minimum 100px et au maximum une fraction
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    // Au lieu de mettre une bordure sur chaque carte, on utilise grid-gap afin de créer un écart entre elles
+    // Et on ajouter un dégradé en background pour donner l'illusion.
+    grid-gap: 1px;
+    background: var(--gradient);
+    min-width: 280px;
     margin: auto;
-    display: flex;
-    flex-flow: row wrap;
+    padding: 20px;
+    // On demande à ce tableau d'être en position relative afin de servir de point d'ancrage à de potentiels éléments
+    // qui seraient positionnés de manière absolue.
+    position: relative;
 }
 
+// Ici on applique une couleur de base sur les cartes afin de les différencier du fond
+// On ajouter cursor:pointer pour que la souris indique que la zone est cliquable
 .conteneur-carte {
-    border: 1px solid black;
+    background-color: var(--background);
+    cursor: pointer;
 }
 
+// On demande à l'image de faire 100% de son conteneur
+// Si le conteneur n'a pas les même proportions que l'image, object-fit cover se chargera de remplir la case
 .carte {
-    min-width: 100px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.barre-de-progression {
-    width: 100%;
+// Ici on ajoute un background à notre image d'accueil. Mais pourquoi ?
+.accueil {
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    background: var(--gradient);
+}
+
+// Parce qu'on veut "teinter" l'image avec le background via une propriétée nommée mix-blend-mode.
+// Elle mélange les couleurs de l'image avec les couleurs du background !
+// On en profite aussi pour augmenter le contraste de l'image et la passer en noir et blanc via filter, c'est plus joli !
+.accueil__image {
+    mix-blend-mode: luminosity;
+    filter: contrast(1) grayscale(1);
+}
+
+// Notre bouton musique contient un emoji
+// Le saviez-vous ? Comme un emoji est du texte, il est possible de changer sa taille via font-size
+// Et pour qu'il soit bien visible, on lui ajouter une animation précédemment déclarée dans /config.scss
+.bouton-musique {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 3rem;
+    animation: pulse 0.75s ease-out infinite normal;
+}
+
+// Cette classe n'est utilisée que sur une image et la met en position absolue
+// Cela veut dire qu'elle va aller s'ancrer à un parent (ici la classe tableau)
+// Mettre top, left, bottom et right à 0 signifie que l'image sera centrée horizontalement et verticalement.
+.snoop-dog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    margin: auto;
 }

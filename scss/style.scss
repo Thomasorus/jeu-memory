@@ -1,26 +1,20 @@
-// Il y a peu de style dans cette application, principalement car le il n'y en a pas beaucoup besoin pour avoir un memory fonctionnel !
+// Bienvenue dans le CSS ! 
+// La méthodologie utilisée ici est celle de CUBE CSS, qui consiste à créer des classes utilitaires avant de créer des classes en CSS orienté objet.
 
-// En premier lieu on importe un reset (ici celui de Andy Bell, qui est moderne et non intrusif) afin d'appliquer des règles de base a notre CSS.
+// D'abord on ajoute unr reset afin de standardiser quelques règles de CSS
 @import "./reset";
 
-// On définit une taille maximale et on centre notre body
-// Notons l'utilisation de ch comme valeur : la taille du body dépend ainsi de la taille de la typographie, pratique !
-body {
-    margin: auto;
-}
+// Config contient nos variables et animations
+@import "./config";
 
-// On utilise une grille simple : à gauche les scores, à droite le jeu. 
-// On divise par 12 la page et on donne 1 fraction aux scores et 11 fractions au jeu.
-// Et on séparer de 20 pixels les éléments de notre grille.
-main {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
-    grid-gap: 20px;
-}
+// Base contient le style par défaut appliqué à nos élements HTML
+@import "./base";
 
-h1 {
-    text-align: center;
-}
+// Utilitaire contient quelques classes utilitaires réutilisables
+@import "./utilitaires";
 
+// Blocs contient les éléments customisés visuellement
 @import "./blocs";
+
+// Exception contient les styles liés au changement d'état du jeu (montrer/cacher les cartes par exemple)
 @import "./exceptions";

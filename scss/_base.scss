@@ -1,0 +1,105 @@
+// Ici on donne un style de base à notre jeu.
+
+// On définit une font-size de 10px de base afin d'avoir un multiplicateur de 10 pour les valeurs en REM.
+html {
+    font-size: 10px;
+}
+
+// On définit une taille de 1.6 rem. 1.6 x 10px = 16px.
+// 16 pixels de taille de texte est la taille de base dans les navigateurs et il est conseillé de la respecter.
+// On applique aussi quelques couleurs.
+body {
+    font-size: 1.6rem;
+    font-family: var(--system-fonts);
+    background: var(--background);
+    color: var(--text);
+    margin: auto;
+}
+
+// Le main contient notre jeu et le tableau des scores.
+// On les mets l'un à coté de l'autre via flex, mais on permet qu'ils se chevauchent sur mobile via row wrap.
+main {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+// Aside indique un élément secondaire en rapport avec l'élément principal. Il est donc parfait pour les scores
+// des joueurs.
+aside {
+    padding: 20px;
+}
+
+// La liste des scores des joueurs peut devenir longue après plusieurs parties.
+// On utilise donc un overflow-y et une taille fixe en hauteur pour créer une liste à scroller.
+// vh signifie Viewport Height. Le but est que la liste fasse 50% de la hauteur du navigateur.
+aside ol {
+    overflow-y: scroll;
+    max-height: 50vh;
+}
+
+// Si on devait enlever tout ce qui est secondaire dans la page, ce qui devrait rester doit être dans article.
+// C'est tout naturellement qu'on y met donc le jeu en lui-même.
+// Notons le flex-grow : on autorise article à grandir au détriment de aside, article ayant besoin de plus de place.
+article {
+    padding: 20px;
+    flex-grow: 1;
+    text-align: center;
+    max-width: 1080px;
+    margin: auto;
+}
+
+// On définit un style pour nos titres
+// On leur ajouter un dégradé via background et la custom property --gradient
+// On utilise background-clip et text-fill color pour que le texte prenne comme couleur notre background
+h1,
+h2,
+h3 {
+    text-align: center;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+// La taille des titres et aussi en REM.
+// 10px x 4.2rem = 42pixels.
+h1 {
+    font-size: 4.2rem;
+}
+
+h2 {
+    font-size: 3.6rem;
+}
+
+// Le header contient deux éléments : le titre et le bouton pour la musique.
+// On veut les mettre chacun d'un côté, et flex avec space-between est tout à fait adapté.
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    padding: 20px;
+}
+
+footer {
+    border-top: 1px solid grey;
+    padding: 20px;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+// Bien qu'il n'y ait qu'un seul bouton dans le jeu, il vaut mieux styliser le bouton ici
+button {
+    background: transparent;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+// Progress est un élément HTML méconnu mais pratique.
+// Son principal défaut et qu'il est difficile à styliser.
+// On va donc se contenter de changer sa taille.
+progress[value] {
+    width: 100%;
+    height: 20px;
+    max-width: 1260px;
+}

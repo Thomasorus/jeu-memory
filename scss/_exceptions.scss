@@ -1,9 +1,13 @@
+// Il arrive parfois qu'on doive changer via le JavaScript l'état dans lequel un élément se trouve.
+// C'est une bonne pratique d'utilise des data-attribute pour ce faire et il est possible de les styliser en CSS.
+// Ainsi au lieu d'ajouter des classes comme "visible" ou "flip" on détecte l'état du HTML et on le style en conséquence.
+
 [data-visible="false"] {
     display: none;
 }
 
 [data-visible="true"] {
-    display: block;
+    display: initial;
 }
 
 [data-flipped="false"] {

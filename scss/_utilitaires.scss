@@ -1,0 +1,12 @@
+// Cette classe est extrêmement pratique !
+// Au lieu de mettre un margin sur chacun des éléments de notre jeu, il vaut mieux avoir une unique classe qui l'ajoute.
+// Ici cette combinaison signifie : s'il y a deux éléments enfants, ajouter une marge en haut sur le second élément.
+// Ce faisant, le premier élément n'en a pas, mais les suivants oui !
+.flow>*+* {
+    margin-top: 20px;
+}
+
+// Une classe permettant d'appliquer l'animation de rotation que nous avons défini dans /config.scss.
+.rotation {
+    animation: rotation 2s infinite;
+}
