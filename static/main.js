@@ -54,7 +54,7 @@ function creationJeu(nombreDeCartes) {
   }
 
   // Problème : nos cartes sont dans l'ordre ! On doit les mélanger !
-  // melangerCartes(toutesLesCartes)
+  melangerCartes(toutesLesCartes)
 
   // On va chercher l'endroit dans la page où insérer les cartes
   const tableauDeJeu = document.querySelector('#tableau')
