@@ -11,8 +11,8 @@ app.use(express.static(path.join(__dirname, 'images')))
 // Nos identifiants de connexion MYSQL
 const connexion = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: 'rootroot',
+  user: '',
+  password: '',
   database: 'memory'
 })
 
