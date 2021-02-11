@@ -3,42 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory</title>
+    <title>Good boys memory</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <!-- Le template est simple car beaucoup d'éléments seront créés en JavaScript
     Notons cependant des règles simples :
-        - cCe qu'on va sélectionner en JavaScript possède un ID
+        - Ce qu'on va sélectionner en JavaScript possède un ID
         - Avoir un ID n'empêche pas d'avoir une classe car utiliser un ID en CSS est une mauvaise pratique (spécificité élevée)
         - Les états de l'application sont gérés via des data attributes et non des classes afin de séparer fonctionnel et visuel
         - On utilise un maximum de HTML sémantique : main pour la partie principale, aside pour les scores, article pour le jeu.
 -->
-
-<body>
+<body class="flow">
     <header>
-        <h1>Jeu de memory</h1>
+        <h1>Good boys memory</h1>
+        <button class="bouton-musique" id="playmusic" title="Activer ou désactiver la musique"
+            onclick="jouerSon('musique', 0.2)">🎶</button>
     </header>
     <main>
-        <aside>
-            <ul id="tableauDesScores" class="tableauScores"></ul>
-        </aside>
+        <div class="accueil flow" id="accueil">
+            <img class="accueil__image" src="dog-dance.gif" alt="Un chien qui dandine son fessier">
+            <!-- Ici se trouve le bouton pour lancer le jeu. Il déclenche la fonction creationJeu -->
+            <button id="lancerJeu" onclick="creationJeu(18)" data-visible="true">Jouer</button>
+        </div>
         <article data-visible="false">
             <div class="tableau" id="tableau" data-number="36"></div>
             <progress id="file" min="0" max="300" value="300" class="barre-de-progression"></progress>
         </article>
+        <aside class="flow">
+            <h2>Résultats</h2>
+            <ol id="tableauDesScores" class="tableauScores"></ol>
+        </aside>
     </main>
-    <button id="lancerJeu" onclick="creationJeu(18)" data-visible="true">Commencer</button>
+    <footer>
+        Le code de ce site est disponible sur <a href="https://github.com/Thomasorus/jeu-memory">Github</a>
+    </footer>
+
+    <!-- Ces balises audio servent à jouer de la musique. Cependant elles sont invisibles par défaut car l'attribut controls est manquant. -->
+    <audio src="accueil.mp3" id="musique" preload="auto" loop aria-hidden="true"></audio>
+    <audio src="victoire.mp3" id="victoire" preload="auto" loop aria-hidden="true"></audio>
+    <audio src="woof.mp3" id="woof" aria-hidden="true"></audio>
+    <audio src="defaite.mp3" id="defaite" aria-hidden="true"></audio>
 </body>
 
 <!-- On charge le JavaScript à la fin pour ne pas bloquer le rendu de la page -->
 <script src="main.js"></script>
-
-<!-- Utiliser un addEventListener pour vérifier que le DOM est chargé est TRÈS important !
-    En effet notre JavaScript va manipuler des éléments de la page. Si on le déclenche avant que celle-ci
-    soit affichée, cela ne marchera pas !
--->
 <script>
+    // Utiliser un addEventListener pour vérifier que le DOM est chargé est TRÈS important !
+    // En effet notre JavaScript va manipuler des éléments de la page. Si on le déclenche avant que celle-ci
+    // soit affichée, cela ne marchera pas !
     document.addEventListener("DOMContentLoaded", function () {
         // Dès que la page est chargée, on va récupérer les scores
         RecupererScores()
