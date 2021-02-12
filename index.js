@@ -12,14 +12,18 @@ app.use(express.static(path.join(__dirname, 'images')))
 const connexion = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'rootpassword',
+  password: 'root',
   database: 'memory'
 })
 
 // Une fois l'objet contenant les informations de connexion créé, on peut se connecter.
 connexion.connect(function (err) {
-  if (err) throw err
-  console.log('Connecté à la base de données')
+  if (err) {
+    console.log(err)
+    console.log('Erreur de connexion à la base de données. Les scores ne seront pas récupérés.')
+  } else {
+    console.log('Connecté à la base de données')
+  }
 })
 
 
@@ -40,8 +44,12 @@ app.get('/', (req, res) => {
 app.get('/getScores', (req, res) => {
   // On utilise l'object connexion et une requête SQL pour récupérer tous nos scores
   connexion.query('SELECT * FROM scores', function (error, results, fields) {
-    if (error) throw error
-    return res.send(results)
+    if (error) {
+      console.log('Erreur : impossible de récupérer les scores')
+      console.log(error)
+    } else {
+      return res.send(results)
+    }
   })
 })
 
@@ -53,7 +61,10 @@ app.get('/enregistrerScore/:temps', (req, res) => {
   const score = req.params.temps
   // On insère le score dans la base de données via une requête SQL
   connexion.query(`INSERT INTO scores (temps) VALUES (${score})`, function (error, results, fields) {
-    if (error) throw error
+    if (error) {
+      console.log("Erreur : impossible d'enregistrer le score")
+      console.log(error)
+    }
   })
 })
 
