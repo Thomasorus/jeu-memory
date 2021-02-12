@@ -30,6 +30,8 @@ Pour le backend mon choix s'est porté sur express et mysql pour ces raisons :
 
 ## Installation, lancement, dev...
 
+L'installation nécessite nodejs, npm et mysql. A noter que le jeu peut fonctionner sans BDD, un message sera alors affiché dans la console côté backend précisant que les scores ne seront pas enregistrés.
+
 ### Frontend et express:
 
 - `git clone url-du-repo`
@@ -53,6 +55,8 @@ Dans `index.js` ligne 14, indiquer vos identifiants de connexion mysql.
 - `node index.js`
 
 ### Compiler le SCSS
+
+J'ai utilisé Parcel pour la compilation du SCSS. C'est un outil tout en un avec zéro configuration qui installe de par lui-même ses dépendances. Il est parfait pour les débutants, contrairement à un webpack qui demande beaucoup de configuration.
 
 - `npm run watch` pour le dev
 - `npm run build` pour la prod
