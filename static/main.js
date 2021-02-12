@@ -141,7 +141,7 @@ function lancerTimer() {
     tempsDeJeu -= 1
     // A chaque intervalle, on met à jour les informations de la barre de progression
     // via son attribut value. Le HTML se charge de l'affichage, c'est pratique.
-    progressbar.setAttribute('value', `${tempsDeJeu}`)
+    progressbar.setAttribute('value', tempsDeJeu)
   }, 1000)
 }
 
